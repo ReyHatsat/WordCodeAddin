@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Insertar código</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <link href="taskpane.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main>
+      <h1 data-i18n="title">Insertar código</h1>
+      <p id="instructions" data-i18n="instructions">
+        Pegue su código y sitúe el cursor en el documento. Si hay texto seleccionado, el bloque se
+        añade al final de la selección sin borrarlo.
+      </p>
+      <form id="code-form">
+        <label for="code" data-i18n="code">Código</label>
+        <textarea
+          id="code"
+          rows="14"
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="off"
+          aria-describedby="instructions"
+          placeholder="Pegue aquí su código…"
+        ></textarea>
+        <div class="options">
+          <div>
+            <label for="language" data-i18n="language">Lenguaje</label
+            ><select id="language"></select>
+          </div>
+          <div>
+            <label for="theme" data-i18n="theme">Tema</label
+            ><select id="theme">
+              <option value="light" data-i18n="light">Claro</option>
+              <option value="dark" data-i18n="dark">Oscuro</option>
+            </select>
+          </div>
+        </div>
+        <button id="insert" data-i18n="insert" type="submit" disabled>Insertar en Word</button>
+      </form>
+      <p id="status" data-i18n="initial" role="status" aria-live="polite" aria-atomic="true">
+        Abra este panel desde Word para insertar código.
+      </p>
+      <p class="note" data-i18n="note">
+        El código se procesa localmente y queda editable. Las tabulaciones se conservan con
+        posiciones cada cuatro caracteres.
+      </p>
+    </main>
+  </body>
+</html>

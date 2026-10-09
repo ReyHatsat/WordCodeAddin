@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+  "id": "c1b06178-4084-4a0e-8f1e-7acddec19930",
+  "manifestVersion": "devPreview",
+  "version": "1.1.0",
+  "name": {
+    "short": "WordCodeAddin",
+    "full": "Insertar código en Word"
+  },
+  "description": {
+    "short": "Inserta bloques de código en Word.",
+    "full": "Complemento para insertar código de programación con formato y resaltado de sintaxis en documentos de Microsoft Word."
+  },
+  "developer": {
+    "name": "ReyHatsat",
+    "websiteUrl": "https://github.com/ReyHatsat/WordCodeAddin",
+    "privacyUrl": "https://github.com/ReyHatsat/WordCodeAddin/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/ReyHatsat/WordCodeAddin/blob/main/LICENSE"
+  },
+  "icons": {
+    "outline": "assets/code-logo-v102-outline.png",
+    "color": "assets/code-logo-v102-color.png"
+  },
+  "accentColor": "#230201",
+  "localizationInfo": {
+    "defaultLanguageTag": "es-es",
+    "additionalLanguages": [
+      {
+        "languageTag": "en-us",
+        "file": "en-us.json"
+      }
+    ]
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "validDomains": ["localhost"],
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": ["document"]
+      },
+      "runtimes": [
+        {
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html?v=1.1.0"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "TaskPaneRuntimeShow",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "contexts": ["default"],
+          "tabs": [
+            {
+              "builtInTabId": "TabInsert",
+              "groups": [
+                {
+                  "id": "msgReadGroup",
+                  "label": "Código",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/code-logo-v102-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/code-logo-v102-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/code-logo-v102-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "msgReadOpenPaneButton",
+                      "type": "button",
+                      "label": "Insertar código",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/code-logo-v102-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/code-logo-v102-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/code-logo-v102-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Insertar código",
+                        "description": "Abra el panel para insertar bloques de código con formato."
+                      },
+                      "actionId": "TaskPaneRuntimeShow"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

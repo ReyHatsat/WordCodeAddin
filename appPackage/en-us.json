@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.Localization.schema.json",
+  "name.short": "WordCodeAddin",
+  "name.full": "Insert Code into Word",
+  "description.short": "Insert editable code blocks into Word.",
+  "description.full": "Insert formatted programming code with syntax highlighting into Microsoft Word documents.",
+  "extensions[0].ribbons[0].tabs[0].groups[0].label": "Code",
+  "extensions[0].ribbons[0].tabs[0].groups[0].controls[0].label": "Insert Code",
+  "extensions[0].ribbons[0].tabs[0].groups[0].controls[0].supertip.title": "Insert Code",
+  "extensions[0].ribbons[0].tabs[0].groups[0].controls[0].supertip.description": "Open the pane to insert formatted code blocks."
+}

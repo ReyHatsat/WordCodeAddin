@@ -1,0 +1,89 @@
+:root {
+  font-family: "Segoe UI", sans-serif;
+  color: #202124;
+  background: #fff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  padding: 20px;
+  max-width: 560px;
+  margin: auto;
+}
+h1 {
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 16px 0 6px;
+}
+textarea,
+select,
+button {
+  width: 100%;
+  font: inherit;
+  border-radius: 4px;
+}
+textarea,
+select {
+  border: 1px solid #767676;
+  padding: 8px;
+  background: #fff;
+  color: #202124;
+}
+textarea {
+  font:
+    13px/1.5 Consolas,
+    "Courier New",
+    monospace;
+  resize: vertical;
+  min-height: 180px;
+  white-space: pre;
+  overflow: auto;
+  tab-size: 4;
+}
+.options {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.options > div {
+  flex: 1 1 110px;
+}
+button {
+  margin-top: 20px;
+  padding: 11px;
+  border: 0;
+  background: #005a9e;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+:focus-visible {
+  outline: 3px solid #005a9e;
+  outline-offset: 3px;
+}
+#status {
+  min-height: 40px;
+}
+#status[data-error="true"] {
+  color: #a4262c;
+}
+.note {
+  color: #505050;
+}
