@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Bloques de código editables en Word. Editable code blocks in Word."
+    />
+    <title>WordCodeAddin · Instalación / Installation</title>
+    <link rel="icon" href="assets/code-logo-v102-32.png" />
+    <style>
+      :root {
+        font-family: "Segoe UI", sans-serif;
+        color: #202124;
+        background: #f5f7fa;
+        line-height: 1.65;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 800px;
+        margin: auto;
+        padding: 40px 24px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      header img {
+        width: 72px;
+        height: 72px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(24px, 5vw, 36px);
+      }
+      h2 {
+        line-height: 1.3;
+      }
+      a {
+        color: #005a9e;
+        text-underline-offset: 3px;
+      }
+      a:focus-visible {
+        outline: 3px solid #005a9e;
+        outline-offset: 4px;
+      }
+      nav {
+        margin: 24px 0;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      section {
+        background: white;
+        padding: 24px;
+        border: 1px solid #dce2ea;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+      li {
+        margin: 12px 0;
+      }
+      .download {
+        display: inline-block;
+        background: #005a9e;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      footer {
+        font-size: 14px;
+        color: #505050;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img src="assets/code-logo-v102-color.png" alt="" />
+        <div>
+          <h1>WordCodeAddin</h1>
+          <p>Código editable en Word · Editable code in Word</p>
+        </div>
+      </header>
+      <nav aria-label="Idioma / Language">
+        <a href="#es">Español</a><a href="#en" lang="en-US">English</a
+        ><a href="https://github.com/ReyHatsat/WordCodeAddin">GitHub</a>
+      </nav>
+      <section id="es" lang="es">
+        <h2>Instálelo una vez. Después, abra Word.</h2>
+        <p>
+          El panel se carga desde GitHub Pages. No necesita ejecutar un servidor local, instalar
+          Node.js ni abrir Start.cmd. Necesita conexión a Internet y Word compatible con manifiestos
+          unificados.
+        </p>
+        <a class="download" href="wordcodeaddin.zip" download>Descargar complemento · 1.2.0</a>
+        <ol>
+          <li>
+            Descargue el ZIP con el botón anterior. <strong>No lo extraiga.</strong> Guarde sus
+            documentos y cierre Word.
+          </li>
+          <li>
+            En Microsoft Teams, con la misma cuenta de Microsoft 365 que utiliza en Word, abra
+            <strong
+              >Aplicaciones → Administrar sus aplicaciones → Cargar una aplicación → Cargar una
+              aplicación personalizada</strong
+            >.
+          </li>
+          <li>
+            Seleccione <strong>wordcodeaddin.zip</strong>, pulse <strong>Agregar</strong> y cierre
+            Teams. Si no aparece la opción de carga, solicite la instalación al administrador de su
+            organización.
+          </li>
+          <li>
+            Abra Word y un documento editable. Busque
+            <strong>Insertar → Código → Insertar código</strong>. Si no aparece, seleccione
+            WordCodeAddin desde <strong>Inicio → Complementos</strong>; puede tardar unos minutos.
+          </li>
+        </ol>
+        <p>
+          El idioma del panel sigue el de Word: español formal o inglés estadounidense. El código se
+          procesa en su equipo; no se ejecuta ni se envía al servidor.
+        </p>
+        <p>
+          La versión local previamente instalada no cambia automáticamente. Instalar este paquete
+          sustituye su registro por la versión alojada.
+        </p>
+        <p>
+          <a href="https://github.com/ReyHatsat/WordCodeAddin/blob/main/README.md"
+            >Guía completa y solución de problemas</a
+          >
+        </p>
+      </section>
+      <section id="en" lang="en-US">
+        <h2>Install once. Then open Word.</h2>
+        <p>
+          The pane loads from GitHub Pages. No local server, Node.js installation, or Start.cmd is
+          needed. Internet access and Word with unified manifest support are required.
+        </p>
+        <a class="download" href="wordcodeaddin.zip" download>Download Add-in · 1.2.0</a>
+        <ol>
+          <li>
+            Download the ZIP using the button above. <strong>Do not extract it.</strong> Save your
+            documents and close Word.
+          </li>
+          <li>
+            In Microsoft Teams, using the same Microsoft 365 account as Word, select
+            <strong>Apps → Manage your apps → Upload an app → Upload a custom app</strong>.
+          </li>
+          <li>
+            Select <strong>wordcodeaddin.zip</strong>, select <strong>Add</strong>, and close Teams.
+            If the upload option is unavailable, please ask your organization's administrator to
+            install the add-in.
+          </li>
+          <li>
+            Open Word and an editable document. Select <strong>Insert → Code → Insert Code</strong>.
+            If it is missing, select WordCodeAddin from <strong>Home → Add-ins</strong>; it may take
+            a few minutes to appear.
+          </li>
+        </ol>
+        <p>
+          The pane follows Word's display language: formal Spanish or American English. Code is
+          processed on your computer; it is not executed or sent to the server.
+        </p>
+        <p>
+          An existing local installation does not change automatically. Installing this package
+          replaces its registration with the hosted version.
+        </p>
+        <p>
+          <a href="https://github.com/ReyHatsat/WordCodeAddin/blob/main/README.en.md"
+            >Complete guide and troubleshooting</a
+          >
+        </p>
+      </section>
+      <footer>
+        <a href="https://github.com/ReyHatsat/WordCodeAddin/blob/main/PRIVACY.md"
+          >Privacidad / Privacy</a
+        >
+        · <a href="https://github.com/ReyHatsat/WordCodeAddin/blob/main/LICENSE">MIT License</a>
+      </footer>
+    </main>
+  </body>
+</html>

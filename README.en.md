@@ -2,18 +2,47 @@
 
 [Español](README.md) | **English (United States)**
 
-Insert editable code blocks with syntax highlighting into Microsoft Word. The interface follows Word's display language: formal Spanish or American English. Other languages use Spanish. Code is processed locally and is never executed.
+Editable code blocks with syntax highlighting for Microsoft Word. The interface follows Word's display language: formal Spanish or American English; other languages use Spanish.
 
-## Install on Windows
+**[Download and install the add-in](https://reyhatsat.github.io/WordCodeAddin/)**
 
-You will need **Word for Windows with an active Microsoft 365 account**, internet access, and [Node.js 22.15 or later](https://nodejs.org/en/download). Your organization must allow custom Office add-ins. This project uses the unified manifest; [check Microsoft's compatibility requirements](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/unified-manifest-overview) if Word does not load it.
+## Install the hosted version
 
-1. Select **Code → Download ZIP** on [GitHub](https://github.com/ReyHatsat/WordCodeAddin), then extract the ZIP.
-2. Open the extracted folder and double-click **Install.cmd**. This is only needed the first time.
-3. Sign in using **the same Microsoft 365 account as Word**. Approve the local HTTPS development certificate if prompted.
-4. Word opens. Open an editable document and select **Insert → Code → Insert Code**. In Spanish Word, select **Insertar → Código → Insertar código**.
+This version loads the pane from GitHub Pages. **No Node.js, Start.cmd, or local server is needed to use it.** Internet access, Word with unified manifest support, and a Microsoft 365 account whose organization permits custom apps are required. The manifest retains `devPreview` from the original project; compatibility depends on your Office version and channel.
 
-If you prefer a terminal, open one in the folder containing `package.json` and run these commands **one at a time**:
+1. Download [wordcodeaddin.zip](https://reyhatsat.github.io/WordCodeAddin/wordcodeaddin.zip). **Do not extract it.**
+2. Save your documents and close Word.
+3. Open Microsoft Teams using the same account as Word. Select **Apps → Manage your apps → Upload an app → Upload a custom app**.
+4. Select the downloaded ZIP, select **Add**, and close Teams. You do not need to open the add-in in Teams.
+5. Open Word and an editable document. Select **Insert → Code → Insert Code**. If it is missing, select WordCodeAddin from **Home → Add-ins**. It may take a few minutes to appear.
+
+If custom app upload is unavailable, your administrator must enable it or distribute the package through your organization's supported Microsoft 365 channels. See [Microsoft's installation procedure](https://learn.microsoft.com/en-us/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-through-the-teams-app-store) and [compatibility requirements](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/unified-manifest-overview).
+
+**After installation, simply open Word.** The pane and icons are downloaded from GitHub Pages when Word needs them. The hosted address must remain available.
+
+### If the local version is already installed
+
+Publishing this website does not change your installation. To switch to the hosted version, install the ZIP above once; both versions use the same add-in identifier. The hosted version does not need a local server. If Word retains the old registration, close its windows and review Microsoft's cache update guidance before reinstalling. Do not delete documents or entire Office folders to update the add-in.
+
+## Use
+
+Paste your code, select a language and a Light or Dark theme, place the cursor in Word, and select **Insert into Word**. The block is added at the end of the selection without replacing existing text and remains editable.
+
+Supports C#, Python, JavaScript, TypeScript, Java, HTML, CSS, SQL, JSON, Bash, and Plain Text, with Consolas 10-point text, colors, background, borders, spaces, line breaks, and tabs. The add-in does not translate or execute code; processing happens on your computer. Reopen the pane after changing Word's display language.
+
+## Troubleshooting
+
+- **Missing ribbon button:** confirm unified manifest support, the same signed-in account, and your organization's custom app permissions. Look for WordCodeAddin under Home → Add-ins and restart Word.
+- **Upload a custom app is unavailable:** please contact your Microsoft 365 administrator. Downloading the project again does not change organizational policies.
+- **Pane unavailable:** check your Internet connection and access to `reyhatsat.github.io`. The hosted version does not use localhost or development certificates.
+- **Word still opens localhost:** the local version is still registered. Install the hosted package and restart Word. A GitHub update does not automatically update Word's registration.
+- **Protected document:** allow editing or use an editable document.
+
+## Local development (optional)
+
+This section is for modifying the code. It requires [Node.js 22.15 or later](https://nodejs.org/en/download), Word for Windows, and permission to install custom add-ins.
+
+Download the source using **Code → Download ZIP**, extract it, and double-click **Install.cmd**. Alternatively, run these commands in the folder containing `package.json`:
 
 ```powershell
 npm ci
@@ -21,38 +50,21 @@ npm run signin:browser
 npm run start:desktop:word:browser
 ```
 
-**Keep the local server running while using the add-in.** This is a local installation, rather than an Office Store installation. Each computer needs its own copy and server. GitHub does not host the running add-in.
+Use the same account as Word. Approve the local HTTPS certificate if prompted. For subsequent development sessions, open **Start.cmd** or run `npm run dev-server` and keep the server running. These scripts install the local variant, rather than the hosted version.
 
-## Open it again
+Browser sign-in includes a workaround for Windows `platform_broker_error`, verified with Agents Toolkit CLI 1.1.17. It changes only its child processes, rather than Windows or dependencies. Toolkit updates may require adjustments. For local certificate errors, run `npx office-addin-dev-certs install`. Use normal startup without debugging to avoid the WebView debugging pause.
 
-Double-click **Start.cmd**, leave its window open, and open Word. Alternatively, open a terminal in the project folder and run:
+## Build and publish
 
 ```powershell
-npm run dev-server
+npm run check
+npm run build:hosted
 ```
 
-Leave that terminal open, launch Word, and use the ribbon button. The add-in is already registered; sign-in and installation are only needed on the first run. To stop the server, press **Ctrl+C** in its terminal. Close Word before stopping it.
+The first command runs TypeScript, lint, tests, a local build, and manifest validation. The second generates `dist/` with GitHub Pages URLs, validates the hosted manifest, and creates `dist/wordcodeaddin.zip` with icons and the English translation. It does not install into Word or open a server.
 
-## Use
+Changes to `main` publish through the **Publish GitHub Pages** workflow. Only `dist/` is deployed; node_modules, credentials, and local configuration are excluded. For another host, set `ADDIN_PRODUCTION_URL` to an HTTPS URL with a trailing `/` before running `npm run build:hosted`, and update the installation guide's address.
 
-Paste your code, select a language and a Light or Dark theme, place the cursor in Word, and select **Insert into Word**. If text is selected, the block is added after the selection. Existing text is preserved. The inserted code remains editable, with Consolas 10-point text, colors, background, borders, line breaks, spaces, and tabs.
+GitHub Pages is free for this public repository, subject to its [limits and terms](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits). This deployment is not an Office Store listing and does not override Microsoft 365 installation policies.
 
-Supported languages: C#, Python, JavaScript, TypeScript, Java, HTML, CSS, SQL, JSON, Bash, and Plain Text. The add-in does not translate the code. English Word uses American English; Spanish Word uses formal Spanish. Reopen the pane after changing Word's display language.
-
-## If installation fails
-
-- **Sign-in error:** confirm that Word and the browser use the same Microsoft 365 account. The commands above include a browser sign-in workaround for Windows `platform_broker_error`. It changes only its child processes and does not modify Windows or dependencies. This workaround was verified with Agents Toolkit CLI 1.1.17; future versions may require adjustments.
-- **Certificate error:** run `npx office-addin-dev-certs install`, accept the certificate, and try again.
-- **No ribbon button:** confirm that your Word version supports unified Office manifests and that your organization permits sideloading. Restart Word. Microsoft 365 permissions or unsupported clients cannot be fixed by downloading the repository again.
-- **Blank pane or unavailable localhost:** start `npm run dev-server` in the project folder and leave it running. Port 3000 must be available.
-- **WebView debugging dialog:** choose **Cancel**. Use the normal startup commands above, which disable debugging.
-
-## Development and distribution
-
-Run `npm run check` for TypeScript, lint, tests, production build, and manifest validation. Run `npm run build:dev` for a development build. `dist/` contains the built panel, icons, manifest, and English localization file. Build output is excluded from Git.
-
-For hosted distribution, provide an HTTPS server, set `ADDIN_PRODUCTION_URL` to its URL with a trailing slash before building, update manifest domains, and distribute the app package through the Microsoft 365 channels supported by your organization. This repository is ready for local installation; it does not publish a hosted service or an Office Store listing. The unified manifest currently retains `devPreview` from the original project.
-
-See [privacy information](PRIVACY.md) and the [MIT license](LICENSE). Office.js is loaded from Microsoft's CDN. Authentication and installation use Microsoft's services; the add-in itself adds no telemetry and does not send code snippets to a server.
-
-Run `npm run package` after building to generate `dist/wordcodeaddin.zip`. This ZIP contains the manifest, installation icons, and English translation; the pane requires the HTTPS server described above.
+See [privacy information](PRIVACY.md), the [MIT license](LICENSE), [attribution](NOTICE.md), and [validation](VALIDATION.md).

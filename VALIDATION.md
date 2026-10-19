@@ -1,3 +1,15 @@
+# Hosted release / Versión alojada — 1.2.0
+
+- `npm run check`: TypeScript, lint, 10 tests, production build, manifest validation, and packaging passed.
+- `npm run build:hosted`: passed; hosted URLs, domain, icon files, manifest validation, ZIP manifest, and English translation verified.
+- GitHub Pages deployment workflow publishes only `dist/` after checks pass.
+- The local Office installation is not modified by building or publishing. A hosted package must be installed once to switch an existing local registration.
+- Visual verification inside Word after installing the hosted package remains a manual check.
+
+Las comprobaciones de compilación y paquete alojado pasaron. Publicar no cambia el complemento instalado. Para migrar una instalación local es necesario instalar el paquete alojado una vez. La comprobación visual en Word queda pendiente para esa instalación.
+
+---
+
 # Validation / Validación — 1.1.0
 
 Validated on Windows with Node.js 26.11.1 and npm 11.20.0. GitHub Actions runs the project checks on Windows with Node.js 22.

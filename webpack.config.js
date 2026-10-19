@@ -72,10 +72,17 @@ module.exports = async (env, options) => {
               if (dev) {
                 return content;
               } else {
-                return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
+                const manifest = JSON.parse(
+                  content.toString().replace(new RegExp(urlDev, "g"), urlProd)
+                );
+                if (manifest.validDomains && process.env.ADDIN_PRODUCTION_URL) {
+                  manifest.validDomains = [new URL(urlProd).hostname];
+                }
+                return JSON.stringify(manifest, null, 2);
               }
             },
           },
+          { from: "static/index.html", to: "index.html" },
         ],
       }),
     ],

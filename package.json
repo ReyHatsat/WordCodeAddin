@@ -1,6 +1,6 @@
 {
   "name": "wordcodeaddin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ReyHatsat/WordCodeAddin.git"
@@ -36,7 +36,8 @@
     "start:desktop:word:browser": "node scripts/office-browser-auth.cjs start",
     "debug:desktop:word": "office-addin-debugging start appPackage/manifest.json desktop --app word",
     "check": "npm run typecheck && npm run lint && npm test && npm run build && npm run validate && npm run package",
-    "package": "office-addin-manifest export --manifest dist/manifest.json --output dist/wordcodeaddin.zip"
+    "package": "office-addin-manifest export --manifest dist/manifest.json --output dist/wordcodeaddin.zip",
+    "build:hosted": "node scripts/build-hosted.cjs"
   },
   "dependencies": {
     "core-js": "^3.36.0",
